@@ -1,7 +1,5 @@
 import { HiMenu } from "react-icons/hi";
 import { AiOutlineClose } from "react-icons/ai";
-
-import logo from "/logo.png";
 import { cn } from "../helpers/utils";
 import { ComponentProps, FC, useState } from "react";
 import useOutsideClickClose from "../hooks/useOutsideClickClose";
@@ -17,7 +15,11 @@ const Navbar = () => {
   return (
     <nav className="flex w-full items-center justify-between p-4">
       <div className="flex-initial items-center justify-center md:flex-[0.5]">
-        <img src={logo} alt="Company Logo" className="w-32 cursor-pointer" />
+        <img
+          src={"/sepoliapay.webp"}
+          alt="Company Logo"
+          className="w-12 cursor-pointer rounded-full"
+        />
       </div>
       <ul className="hidden flex-initial list-none flex-row items-center justify-between text-white md:flex">
         {nav_links.map((link, index) => (

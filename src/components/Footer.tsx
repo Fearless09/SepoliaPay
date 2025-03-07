@@ -9,8 +9,8 @@ const Footer = () => {
         <div className="my-6 flex w-full flex-col items-center justify-between sm:flex-row">
           <a href="#home">
             <img
-              src="/logo.png"
-              className="w-32 transition-transform duration-300 hover:scale-105"
+              src={"/sepoliapay.webp"}
+              className="w-12 rounded-full transition-transform duration-300 hover:scale-105"
               alt="footer logo"
             />
           </a>
