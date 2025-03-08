@@ -6,5 +6,12 @@ export interface TransactionType {
   addressFrom: string;
   amount: string;
   addressTo: string;
-  keyword?: string
+  keyword?: string;
+}
+
+export interface TransactionDataType {
+  receiver: string;
+  message: string;
+  amount: number;
+  keyword: string;
 }

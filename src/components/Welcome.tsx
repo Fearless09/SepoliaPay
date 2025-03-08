@@ -1,38 +1,52 @@
 import { SiEthereum } from "react-icons/si";
 import { BsInfoCircle } from "react-icons/bs";
-
 import { Loader } from "./";
 import { cn, truncateAddress } from "../helpers/utils";
 import { ComponentProps, FC, useState } from "react";
 import { useTransactionContext } from "../context/TransactionContext";
 import IdSection from "./IdSection";
+import useConnectWallet from "../hooks/useConnectWallet";
+import { TransactionDataType } from "../utils/Type";
+import useSendTransaction from "../hooks/useSendTransaction";
 
 const commonStyles =
   "min-h-[70px] sm:px-0 px-2 sm:min-w-[120px] flex justify-center items-center border border-gray-400 text-sm font-light transition-transform duration-300 transform hover:scale-105";
 
 const Welcome = () => {
-  const {
-    connectWallet,
-    connectedAccount,
+  const { account } = useTransactionContext();
+  const { connectWallet } = useConnectWallet();
+
+  const [transactionData, setTransactionData] = useState<TransactionDataType>({
+    receiver: "",
+    message: "",
+    amount: 0,
+    keyword: "",
+  });
+
+  const { sendTransaction, sendingTransaction } = useSendTransaction({
     transactionData,
-    handleTranscationDataChange,
-    sendTransaction,
-  } = useTransactionContext();
-  const [loading, setLoading] = useState<boolean>(false);
+  });
+
+  function handleTranscationDataChange(e: React.ChangeEvent<HTMLInputElement>) {
+    setTransactionData((prev) => ({
+      ...prev,
+      [e.target.name]: e.target.value,
+    }));
+  }
 
   return (
     <div id="home" className="relative flex w-full items-center justify-center">
-      <div className="mf:flex-row flex w-full flex-col items-center justify-between px-4 py-12 md:p-20">
+      <div className="mf:flex-row flex w-full flex-col items-center justify-between px-4 py-12 md:py-20">
         {/* First flex item */}
         <div className="mf:text-left max-mf:items-center flex w-full flex-col text-center">
-          <h1 className="text-gradient transform text-4xl font-bold text-white transition-transform duration-300 hover:scale-105 sm:text-5xl md:text-6xl">
+          <h1 className="text-gradient transform text-4xl font-bold text-white transition-transform duration-300 sm:text-5xl md:text-6xl">
             Send Crypto <br /> Anywhere, Anytime
           </h1>
-          <p className="text-gradient mt-5 w-11/12 text-lg font-light text-white sm:text-xl md:w-9/12 md:text-2xl">
+          <p className="mt-5 w-11/12 text-lg font-light text-white sm:text-xl md:w-9/12 md:text-2xl">
             Discover the world of cryptocurrency. Buy, sell, and transfer with
             ease on Krypto.
           </p>
-          {!connectedAccount && (
+          {!account && (
             <button
               type="button"
               onClick={connectWallet}
@@ -81,7 +95,7 @@ const Welcome = () => {
 
               <div>
                 <p className="text-sm font-light text-wrap text-white">
-                  {truncateAddress(connectedAccount)}
+                  {truncateAddress(account)}
                 </p>
                 <p className="mt-1 text-lg font-semibold text-white">
                   Ethereum
@@ -92,12 +106,9 @@ const Welcome = () => {
 
           <form
             className="blue-glassmorphism relative mt-5 flex w-full flex-col items-center justify-start p-5 sm:w-96"
-            onSubmit={(e) => {
+            onSubmit={async (e) => {
               e.preventDefault();
-              setLoading(true);
-              sendTransaction().finally(() => {
-                setLoading(false);
-              });
+              await sendTransaction();
             }}
           >
             <IdSection id="send" />
@@ -136,7 +147,7 @@ const Welcome = () => {
             />
 
             <hr className="my-2 w-full border-gray-400" />
-            {loading ? (
+            {sendingTransaction ? (
               <Loader />
             ) : (
               <button

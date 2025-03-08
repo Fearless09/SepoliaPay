@@ -1,11 +1,18 @@
+import { useEffect } from "react";
 import { useTransactionContext } from "../context/TransactionContext";
 import { cn, truncateAddress } from "../helpers/utils";
 import useFetchGiphyUrl from "../hooks/useFetchGiphyUrl";
+import useGetTransactions from "../hooks/useGetTransactions";
 import { TransactionType } from "../utils/Type";
 import Loader from "./Loader";
 
 const Transactions = () => {
-  const { connectedAccount, transactions } = useTransactionContext();
+  const { account, transactions } = useTransactionContext();
+  const { loadingTransaction, getAllTransactions } = useGetTransactions();
+
+  useEffect(() => {
+    getAllTransactions();
+  }, [account]);
 
   return (
     <div
@@ -14,20 +21,24 @@ const Transactions = () => {
     >
       <div className="flex flex-col px-4 py-12 md:p-12">
         <h3 className="my-2 text-center text-3xl">
-          {connectedAccount
+          {account
             ? "Your Recent Transactions"
             : "Connect Your Wallet to View Transactions"}
         </h3>
 
         <div className="mt-10 flex flex-wrap items-center justify-center">
-          {transactions.length > 0 ? (
-            transactions
-              .reverse()
-              .map((transaction, index) => (
-                <TransactionCard key={index} transaction={transaction} />
-              ))
+          {!loadingTransaction ? (
+            transactions.length > 0 ? (
+              transactions
+                .reverse()
+                .map((transaction, index) => (
+                  <TransactionCard key={index} transaction={transaction} />
+                ))
+            ) : (
+              <p className="text-lg">No transactions found. Start trading!</p>
+            )
           ) : (
-            <p className="text-lg">No transactions found. Start trading!</p>
+            <p className="text-lg">Fetching transactions...</p>
           )}
         </div>
       </div>
