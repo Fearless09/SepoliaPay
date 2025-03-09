@@ -1,24 +1,16 @@
-import { useEffect } from "react";
 import { useTransactionContext } from "../context/TransactionContext";
 import { cn, truncateAddress } from "../helpers/utils";
 import useFetchGiphyUrl from "../hooks/useFetchGiphyUrl";
-import useGetTransactions from "../hooks/useGetTransactions";
 import { TransactionType } from "../utils/Type";
+import IdSection from "./IdSection";
 import Loader from "./Loader";
 
 const Transactions = () => {
   const { account, transactions } = useTransactionContext();
-  const { loadingTransaction, getAllTransactions } = useGetTransactions();
-
-  useEffect(() => {
-    getAllTransactions();
-  }, [account]);
 
   return (
-    <div
-      id="transactions"
-      className="gradient-bg-transactions relative flex w-full items-center justify-center text-white 2xl:px-20"
-    >
+    <div className="gradient-bg-transactions relative flex w-full items-center justify-center text-white 2xl:px-20">
+      <IdSection id="transactions" />
       <div className="flex flex-col px-4 py-12 md:p-12">
         <h3 className="my-2 text-center text-3xl">
           {account
@@ -27,18 +19,14 @@ const Transactions = () => {
         </h3>
 
         <div className="mt-10 flex flex-wrap items-center justify-center">
-          {!loadingTransaction ? (
-            transactions.length > 0 ? (
-              transactions
-                .reverse()
-                .map((transaction, index) => (
-                  <TransactionCard key={index} transaction={transaction} />
-                ))
-            ) : (
-              <p className="text-lg">No transactions found. Start trading!</p>
-            )
+          {transactions.length > 0 ? (
+            transactions
+              .reverse()
+              .map((transaction, index) => (
+                <TransactionCard key={index} transaction={transaction} />
+              ))
           ) : (
-            <p className="text-lg">Fetching transactions...</p>
+            <p className="text-lg">No transactions found. Start trading!</p>
           )}
         </div>
       </div>

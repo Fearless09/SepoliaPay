@@ -35,8 +35,9 @@ const Welcome = () => {
   }
 
   return (
-    <div id="home" className="relative flex w-full items-center justify-center">
-      <div className="mf:flex-row flex w-full flex-col items-center justify-between px-4 py-12 md:py-20">
+    <div className="relative flex w-full items-center justify-center">
+      <IdSection id="home" />
+      <div className="mf:flex-row flex w-full flex-col items-center justify-between px-4 py-28 lg:py-20">
         {/* First flex item */}
         <div className="mf:text-left max-mf:items-center flex w-full flex-col text-center">
           <h1 className="text-gradient transform text-4xl font-bold text-white transition-transform duration-300 sm:text-5xl md:text-6xl">
@@ -69,8 +70,10 @@ const Welcome = () => {
                 key={index}
                 className={cn(commonStyles, "cursor-pointer", {
                   "rounded-tl-3xl": index === 0,
-                  "rounded-tr-3xl": index === 2,
-                  "rounded-bl-3xl": index === 3,
+                  "rounded-tr-3xl sm:rounded-none": index === 1,
+                  "sm:rounded-tr-3xl": index === 2,
+                  "sm:rounded-bl-3xl": index === 3,
+                  "rounded-bl-3xl sm:rounded-none": index === 4,
                   "rounded-br-3xl": index === 5,
                 })}
               >
@@ -82,8 +85,8 @@ const Welcome = () => {
 
         {/* Send flex item */}
         <div className="mf:items-end mt-10 flex w-full flex-col items-center justify-start">
-          {/* Glassmorphism */}
-          <div className="white-glassmorphism eth-card relative my-5 h-40 w-full flex-col items-start justify-end rounded-xl p-4 sm:w-72">
+          {/* ETH Glassmorphism */}
+          <div className="white-glassmorphism eth-card relative my-5 h-40 w-full max-w-72 flex-col items-start justify-end rounded-xl p-4">
             <IdSection id="wallets" />
             <div className="flex h-full w-full flex-col justify-between">
               <div className="flex items-start justify-between">

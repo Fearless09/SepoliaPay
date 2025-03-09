@@ -7,7 +7,8 @@ import useGetTransactions from "./useGetTransactions";
 
 export default function useConnectWallet() {
   const [connecting, setConnecting] = useState<boolean>(false);
-  const { setAccount } = useTransactionContext();
+  const { setAccount, setTransactionCount, setTransactions } =
+    useTransactionContext();
   const { getTransactionCounts } = useGetTransactionCounts();
   const { getAllTransactions } = useGetTransactions();
 
@@ -46,6 +47,8 @@ export default function useConnectWallet() {
       ],
     });
     setAccount("");
+    setTransactionCount(0);
+    setTransactions([]);
   }
 
   return { connectWallet, connecting, disconnectWallet };

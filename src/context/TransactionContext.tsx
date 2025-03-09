@@ -10,6 +10,8 @@ interface TransactionContextType {
   setTransactions: (value: TransactionType[]) => void;
   accountBal: string;
   setAccountBal: (value: string) => void;
+  wrongChain: boolean;
+  setWrongChain: (value: boolean) => void;
 }
 
 const Context = createContext<TransactionContextType>({
@@ -21,6 +23,8 @@ const Context = createContext<TransactionContextType>({
   setTransactions: () => {},
   accountBal: "",
   setAccountBal: () => {},
+  wrongChain: false,
+  setWrongChain: () => {},
 });
 
 export const { ethereum } = window;
@@ -32,6 +36,7 @@ export const TransactionProvider = ({ children }: { children: ReactNode }) => {
   );
   const [transactions, setTransactions] = useState<TransactionType[]>([]);
   const [accountBal, setAccountBal] = useState<string>("");
+  const [wrongChain, setWrongChain] = useState<boolean>(false);
 
   return (
     <Context.Provider
@@ -44,6 +49,8 @@ export const TransactionProvider = ({ children }: { children: ReactNode }) => {
         setTransactions,
         accountBal,
         setAccountBal,
+        wrongChain,
+        setWrongChain,
       }}
     >
       {children}

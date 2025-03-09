@@ -31,69 +31,69 @@ input[type="number"] {
 }
 
 @utility gradient-bg-welcome {
-  background-color: #1a1a1a;
+  background-color: #0f172a;  /* Dark blue base */
   background-image:
-    radial-gradient(at 0% 0%, hsla(253, 16%, 10%, 1) 0, transparent 50%),
-    radial-gradient(at 50% 0%, hsla(225, 39%, 35%, 1) 0, transparent 50%),
-    radial-gradient(at 100% 0%, hsla(339, 49%, 35%, 1) 0, transparent 50%);
+    radial-gradient(at 0% 0%, hsla(280, 70%, 15%, 1) 0, transparent 50%),
+    radial-gradient(at 50% 0%, hsla(220, 80%, 20%, 1) 0, transparent 50%),
+    radial-gradient(at 100% 0%, hsla(250, 70%, 15%, 1) 0, transparent 50%);
 }
 
 @utility gradient-bg-services {
-  background-color: #1a1a1a;
+  background-color: #121212;
   background-image:
-    radial-gradient(at 0% 0%, hsla(253, 16%, 10%, 1) 0, transparent 50%),
-    radial-gradient(at 50% 100%, hsla(225, 39%, 30%, 1) 0, transparent 50%);
+    radial-gradient(at 0% 0%, hsla(266, 55%, 12%, 1) 0, transparent 50%),
+    radial-gradient(at 50% 100%, hsla(201, 65%, 18%, 1) 0, transparent 50%);
 }
 
 @utility gradient-bg-transactions {
-  background-color: #1a1a1a;
+  background-color: #121212;
   background-image:
-    radial-gradient(at 0% 100%, hsla(253, 16%, 10%, 1) 0, transparent 50%),
-    radial-gradient(at 50% 0%, hsla(225, 39%, 30%, 1) 0, transparent 50%);
+    radial-gradient(at 0% 100%, hsla(266, 55%, 12%, 1) 0, transparent 50%),
+    radial-gradient(at 50% 0%, hsla(201, 65%, 18%, 1) 0, transparent 50%);
 }
 
 @utility gradient-bg-footer {
-  background-color: #1a1a1a;
+  background-color: #121212;
   background-image:
-    radial-gradient(at 0% 100%, hsla(253, 16%, 10%, 1) 0, transparent 53%),
-    radial-gradient(at 50% 150%, hsla(339, 49%, 35%, 1) 0, transparent 50%);
+    radial-gradient(at 0% 100%, hsla(266, 55%, 12%, 1) 0, transparent 53%),
+    radial-gradient(at 50% 150%, hsla(320, 65%, 18%, 1) 0, transparent 50%);
 }
 
 @utility blue-glassmorphism {
-  background: rgb(39, 51, 89, 0.4);
+  background: rgba(15, 23, 42, 0.7);  /* Stronger blue tint */
   border-radius: 16px;
-  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.3);
   backdrop-filter: blur(5px);
   -webkit-backdrop-filter: blur(5px);
-  border: 1px solid rgba(0, 0, 0, 0.3);
+  border: 1px solid rgba(59, 130, 246, 0.2);  /* Blue border */
 }
 
-/* white glassmorphism */
 @utility white-glassmorphism {
-  background: rgba(255, 255, 255, 0.05);
+  background: rgba(255, 255, 255, 0.1);  /* Increased white opacity */
   border-radius: 16px;
   backdrop-filter: blur(5px);
   -webkit-backdrop-filter: blur(5px);
-  border: 1px solid rgba(255, 255, 255, 0.3);
+  border: 1px solid rgba(255, 255, 255, 0.2);  /* Brighter white border */
+  box-shadow: 0 4px 30px rgba(255, 255, 255, 0.05);  /* Subtle white glow */
 }
 
 @utility eth-card {
-  background-color: #b3a3ff;
+  background-color: #1e1b4b;
   background-image:
-    radial-gradient(at 83% 67%, rgb(162, 241, 176) 0, transparent 58%),
-    radial-gradient(at 67% 20%, hsla(357, 94%, 75%, 1) 0, transparent 59%),
-    radial-gradient(at 88% 35%, hsla(222, 81%, 70%, 1) 0, transparent 50%),
-    radial-gradient(at 31% 91%, hsla(9, 61%, 65%, 1) 0, transparent 52%),
-    radial-gradient(at 27% 71%, hsla(336, 91%, 70%, 1) 0, transparent 49%),
-    radial-gradient(at 74% 89%, hsla(30, 98%, 70%, 1) 0, transparent 51%),
-    radial-gradient(at 53% 75%, hsla(174, 94%, 73%, 1) 0, transparent 45%);
+    radial-gradient(at 83% 67%, rgb(34, 197, 94) 0, transparent 58%),
+    radial-gradient(at 67% 20%, hsla(345, 100%, 30%, 1) 0, transparent 59%),
+    radial-gradient(at 88% 35%, hsla(217, 100%, 30%, 1) 0, transparent 50%),
+    radial-gradient(at 31% 91%, hsla(15, 100%, 30%, 1) 0, transparent 52%),
+    radial-gradient(at 27% 71%, hsla(330, 100%, 30%, 1) 0, transparent 49%),
+    radial-gradient(at 74% 89%, hsla(25, 100%, 30%, 1) 0, transparent 51%),
+    radial-gradient(at 53% 75%, hsla(180, 100%, 30%, 1) 0, transparent 45%);
 }
 
 @utility text-gradient {
-  background-color: #fff;
+  background-color: #ffffff;
   background-image:
-    radial-gradient(at 4% 36%, hsla(0, 0%, 100%, 1) 0, transparent 53%),
-    radial-gradient(at 100% 60%, rgb(0, 0, 0) 0, transparent 50%);
+    radial-gradient(at 4% 36%, hsla(0, 0%, 60%, 1) 0, transparent 53%),
+    radial-gradient(at 100% 60%, rgb(120, 120, 120) 0, transparent 50%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 }
