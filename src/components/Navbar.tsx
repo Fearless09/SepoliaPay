@@ -28,7 +28,7 @@ const Navbar = () => {
   }, [account]);
 
   return (
-    <header className="white-glassmorphism fixed inset-x-0 top-0 z-[9] rounded-none border-hidden text-white">
+    <header className="blue-glassmorphism fixed inset-x-0 top-0 z-[9] rounded-none border-hidden text-white">
       <nav className="container mx-auto flex w-full items-center justify-between p-4">
         <a href="#home" className="shrink-0">
           <img
